@@ -14,6 +14,9 @@ This allows companies to quickly action feedback and, most importantly, demonstr
 ---
 ### Project Mockup
 
+![Index](./public/assets/index.png)
+![Post](./public/assets/post.png)
+
 ---
 ### Routes
 
@@ -38,7 +41,8 @@ This allows companies to quickly action feedback and, most importantly, demonstr
         description: { type: String, required: true },
         postCreated: { type: Date, default: Date() },
         lastEdit: { type: Date, default: Date() },
-        upVotes: Number
+        upVotes: Number,
+        comments: { type: String }
     }
     ```
 ---
