@@ -1,6 +1,7 @@
 // Import
 const express = require('express');
 const Post = require('../models/post');
+const postSeed = require('../models/postSeed')
 
 const router = express.Router();
 
@@ -8,6 +9,15 @@ const router = express.Router();
 router.get('/', (req, res) => {
     res.render('index.ejs');
 });
+
+// Seed Route
+router.get('/seed', (req, res) => {
+    Post.deleteMany({}, (err, deletedPosts) => {
+        Post.create(postSeed, (err, data) => {
+            res.redirect('/posts')
+        })
+    })
+})
 
 // New Route
 router.get('/new', (req, res) => {
