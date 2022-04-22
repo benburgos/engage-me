@@ -1,5 +1,5 @@
 // Import Dependencies
-const mongoose = require('mongoose');
+const mongoose = require('./connection');
 const {Schema, model} = mongoose;
 
 // Post Schema
@@ -11,7 +11,10 @@ const postSchema = new Schema(
         postCreated: { type: Date, default: Date() },
         lastEdit: { type: Date, default: Date() },
         upVotes: Number,
-        comments: { type: String }
+        comments: { 
+            date: { type: Date, default: Date() },
+            text: { type: String } 
+        }
     }
 );
 

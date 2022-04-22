@@ -6,7 +6,10 @@ module.exports = [
         postCreated: Date(),
         lastEdit: Date(),
         upVotes: 262,
-        comments: ["You're right, we need one!"]
+        comments: {
+            date: Date(),
+            text: "You're right, we need one!"
+        }
     },
     {
         feedbackType: 'Question',
@@ -15,7 +18,10 @@ module.exports = [
         postCreated: Date(),
         lastEdit: Date(),
         upVotes: 250,
-        comments: ["OMG! Yikes!", "We're on it!"]
+        comments: {
+            date: Date(),
+            text: "OMG! Yikes! We're on it!"
+        }
     },
     {
         feedbackType: 'Question',
@@ -24,7 +30,10 @@ module.exports = [
         postCreated: Date(),
         lastEdit: Date(),
         upVotes: 88,
-        comments: ["That would be great - but impossible!"]
+        comments: {
+            date: Date(),
+            text: "That would be great - but impossible!"
+        }
     },
     {
         feedbackType: 'Feedback',
@@ -33,6 +42,9 @@ module.exports = [
         postCreated: Date(),
         lastEdit: Date(),
         upVotes: 22,
-        comments: ["That's unfortunate", "What about the Nacho Cheese kind?"]
+        comments: {
+            date: Date(),
+            text: "What about the Nacho Cheese kind?"
+        }
     }
 ];
