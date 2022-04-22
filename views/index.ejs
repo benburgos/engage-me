@@ -4,8 +4,54 @@
     <%- include('partials/head.ejs') %> 
 </head>
 <body>
-    <div class="container">
-        <h1>Welcome Home!</h1>
-    </div>
+<div class="container is-widescreen">
+
+    <section>
+        <nav class="navbar" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="/posts">
+                <p class="title">Engage.Me</p>
+                </a>
+            </div>
+        </nav>
+    </section>
+
+    <% for( let index = 0; index < posts.length; index++ ) { %>
+        <section>
+            <div class="card">
+                <header class="card-header">
+                    <p class="card-header-title">
+                      <%= posts[index].feedbackType %> 
+                    </p>
+                  </header>
+                <div class="card-content">
+                    <div class="columns">
+                        <div class="column is-one-fifth has-text-centered">
+                        <p class="title">Upvotes</p>
+                        <p class="subtitle"><%= posts[index].upVotes %> </p>
+                        </div>
+                        <div class="column">
+                            <div class="content">
+                                <p class="title">
+                                    <%= posts[index].title %> 
+                                </p>
+                                <time>
+                                    <%= posts[index].postCreated %> 
+                                </time>
+                            </div>
+                        </div>
+                    </div>
+                    <footer class="card-footer">
+                        <a href="#" class="card-footer-item">Upvote</a>
+                        <a href="#" class="card-footer-item">View Post</a>
+                      </footer>
+                </div>
+            </div>
+        </section>
+    
+        <br>
+    <% } %>
+
+</div>
 </body>
 </html>

@@ -1,3 +1,8 @@
-div {
-    border: 3px solid black;
+@import "https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css";
+
+html {
+    background-color: rgb(206, 215, 249);
+}
+.navbar {
+    background-color: rgb(206, 215, 249);
 }

@@ -7,7 +7,11 @@ const router = express.Router();
 
 // Index Route
 router.get('/', (req, res) => {
-    res.render('index.ejs');
+    Post.find({}, (err, allPosts) => {
+        res.render('index.ejs', {
+            posts: allPosts
+        });
+    });
 });
 
 // Seed Route
