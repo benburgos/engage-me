@@ -7,7 +7,6 @@
 <div class="container is-widescreen">
 
     <nav class="level">
-        <!-- Left side -->
         <div class="level-left">
           <div class="logo">
             <a href="/posts">
@@ -16,7 +15,6 @@
           </div>
         </div>
       
-        <!-- Right side -->
         <div class="level-right">
             <div class="buttons">
                 <a class="button is-link" href="/posts/new">
@@ -24,7 +22,7 @@
                 </a>
             </div>
         </div>
-      </nav>
+    </nav>
 
     <% for( let index = 0; index < posts.length; index++ ) { %>
             <div class="card">
@@ -45,7 +43,7 @@
                                     <%= posts[index].title %> 
                                 </p>
                                 <time>
-                                    <%= posts[index].postCreated %> 
+                                    <p class="subtitle is-6"><i><%= posts[index].postCreated %></i></p>
                                 </time>
                             </div>
                         </div>
