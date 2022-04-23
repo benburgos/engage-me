@@ -8,14 +8,19 @@ const postSchema = new Schema(
         feedbackType: { type: String, required: true },
         title: { type: String, required: true },
         description: { type: String, required: true },
-        postCreated: { type: Date, default: Date() },
-        lastEdit: { type: Date, default: Date() },
         upVotes: Number,
-        comments: { 
-            date: { type: Date, default: Date() },
-            text: { type: String } 
-        }
-    }
+        comments: [
+            {
+                type: new Schema(
+                    {
+                        comment: String
+                    },
+                    { timestamps: true }
+                )
+            }
+        ],
+    },
+    {timestamps: true}
 );
 
 // Post Model
