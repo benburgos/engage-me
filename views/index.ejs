@@ -6,18 +6,27 @@
 <body>
 <div class="container is-widescreen">
 
-    <section>
-        <nav class="navbar" role="navigation" aria-label="main navigation">
-            <div class="navbar-brand">
-                <a class="navbar-item" href="/posts">
-                <p class="title">Engage.Me</p>
+    <nav class="level">
+        <!-- Left side -->
+        <div class="level-left">
+          <div class="logo">
+            <a href="/posts">
+              <p class="title">ENGAGE.ME</p>
+            </a>
+          </div>
+        </div>
+      
+        <!-- Right side -->
+        <div class="level-right">
+            <div class="buttons">
+                <a class="button is-link" href="/posts/new">
+                    + New Post
                 </a>
             </div>
-        </nav>
-    </section>
+        </div>
+      </nav>
 
     <% for( let index = 0; index < posts.length; index++ ) { %>
-        <section>
             <div class="card">
                 <header class="card-header">
                     <p class="card-header-title">
@@ -44,13 +53,13 @@
                     <footer class="card-footer">
                         <a href="#" class="card-footer-item">Upvote</a>
                         <a href="#" class="card-footer-item">View Post</a>
-                      </footer>
+                    </footer>
                 </div>
             </div>
-        </section>
     
         <br>
     <% } %>
+
 
 </div>
 </body>
