@@ -54,8 +54,12 @@
                         </div>
                         <div class="level-right">
                             <div class="buttons">
-                                <input class="button is-warning" type="submit" value="Edit Post">
-                                <input class="button is-danger" type="reset" value="Delete Post">
+                                <a class="button is-warning" href="/posts/<%= post._id %>/edit">
+                                    Edit Post
+                                </a>
+                                <form action="/posts/<%= post._id %>?_method=DELETE" method="post">
+                                    <button type="submit" class="button is-danger">Delete Post</button>
+                                </form>
                             </div>
                         </div>
                     </nav>

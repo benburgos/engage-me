@@ -24,8 +24,9 @@ router.get('/new', (req, res) => {
 });
 
 // Delete Route
-router.delete('/:id', (req, res) => {
-    console.log(`--Delete Route Accessed--`)
+router.delete('/:id', async (req, res) => {
+    const post = await Post.findByIdAndDelete(req.params.id).catch((err) => res.send(err));
+    res.redirect('/posts')
 });
 
 // Update Route
