@@ -7,7 +7,7 @@ const router = express.Router();
 
 // Index Route
 router.get('/', async (req, res) => {
-    const posts = await Post.find({}).catch((err) => res.send(err));
+    const posts = await Post.find({}).sort([['upVotes', 'descending']]).catch((err) => res.send(err));
     res.render('index.ejs', { posts });
 });
 
@@ -48,7 +48,6 @@ router.get('/:id/edit', (req, res) => {
 // Show Route
 router.get('/:id', async (req, res) => {
     const post = await Post.findById(req.params.id).catch((err) => res.send(err));
-    console.log(post)
     res.render('show.ejs', { post });
 });
 

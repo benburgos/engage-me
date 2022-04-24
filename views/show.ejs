@@ -43,7 +43,13 @@
                                     <%= post.description %> 
                                 </div>
                                 <time>
-                                    <p class="subtitle is-6"><i><%= post.createdAt %></i></p>
+                                    <p class="subtitle is-6">
+                                        <i>
+                                            <%= post.createdAt.toLocaleDateString() %>
+                                            @
+                                            <%= post.createdAt.toLocaleTimeString() %>
+                                        </i>
+                                    </p>
                                 </time>
                             </div>
                         </div>
@@ -71,7 +77,11 @@
                     <div class="card-content">
                         <div class="columns">
                             <div class="column is-one-fifth has-text-centered">
-                                <strong>Posted by:</strong> Your Manager @ <%= post.comments[index].createdAt %>
+                                <strong>Posted by:</strong> <br>
+                                Your Manager on <br>
+                                <%= post.comments[index].createdAt.toLocaleDateString() %>
+                                @
+                                <%= post.comments[index].createdAt.toLocaleTimeString() %>
                             </div>
                             <div class="column">
                                 <div class="content">
