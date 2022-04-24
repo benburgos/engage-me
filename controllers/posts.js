@@ -6,26 +6,21 @@ const postSeed = require('../models/postSeed')
 const router = express.Router();
 
 // Index Route
-router.get('/', (req, res) => {
-    Post.find({}, (err, allPosts) => {
-        res.render('index.ejs', {
-            posts: allPosts
-        });
-    });
+router.get('/', async (req, res) => {
+    const posts = await Post.find({}).catch((err) => res.send(err));
+    res.render('index.ejs', { posts });
 });
 
 // Seed Route
-router.get('/seed', (req, res) => {
-    Post.deleteMany({}, (err, deletedPosts) => {
-        Post.create(postSeed, (err, data) => {
-            res.redirect('/posts')
-        })
-    })
-})
+router.get('/seed', async (req, res) => {
+    await Post.remove({}).catch((err) => res.send(err));
+    const posts = await Post.create(postSeed).catch((err) => res.send(err));
+    res.json(posts);
+});
 
 // New Route
 router.get('/new', (req, res) => {
-    res.send('You made it to the new post page!');
+    res.render('new.ejs');
 });
 
 // Delete Route
@@ -39,8 +34,9 @@ router.put('/:id', (req, res) => {
 });
 
 // Create Route
-router.post('/', (req, res) => {
-    console.log(`--Create Route Accessed--`)
+router.post('/', async (req, res) => {
+    await Post.create(req.body).catch((err) => res.send(err));
+    res.redirect('/posts')
 });
 
 // Edit Route

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('partials/head.ejs') %> 
+</head>
+<body>
+<div class="container is-widescreen">
+
+    <nav class="level">
+        <div class="level-left">
+          <div class="logo">
+            <a href="/posts">
+              <p class="title">ENGAGE.ME</p>
+            </a>
+          </div>
+        </div>
+      
+        <div class="level-right">
+            <div class="buttons">
+                <a class="button is-link" href="/posts">
+                    Return to All Posts
+                </a>
+            </div>
+        </div>
+    </nav>
+
+            <div class="card">
+                <header class="card-header">
+                    <p class="card-header-title">
+                      Create A New Post
+                    </p>
+                  </header>
+            <form action="/posts" method="post">
+                <div class="card-content">
+                    <div class="columns">
+                        <div class="column">
+                            <div class="content">
+                                <div class="field">
+                                    <label class="label">Select Feedback Type:</label>
+                                    <div class="control">
+                                        <div class="select">
+                                            <select name="feedbackType">
+                                                <option>Feedback</option>
+                                                <option>Question</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                        <input class="input is-normal" type="text" name="title" placeholder="Please type your question or feedback here!">
+                                        <div class="control">
+                                        <textarea class="textarea is-normal" name="description" placeholder="Please provide additional details. (e.g. This impacts my work because xyz)"></textarea>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                        <nav class="level">
+                            <div class="level-left">
+                              <div class="level-item"></div>
+                              <div class="level-item"></div>
+                            </div>
+                            <div class="level-right">
+                                <div class="buttons">
+                                    <input class="button" type="submit" value="Create Post">
+                                    <input class="button" type="reset" value="Reset">
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </form>
+        <br>
+
+</div>
+</body>
+</html>

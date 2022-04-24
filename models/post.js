@@ -8,7 +8,7 @@ const postSchema = new Schema(
         feedbackType: { type: String, required: true },
         title: { type: String, required: true },
         description: { type: String, required: true },
-        upVotes: Number,
+        upVotes: { type: Number, default: 0},
         comments: [
             {
                 type: new Schema(

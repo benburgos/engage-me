@@ -1,16 +1,20 @@
 // Dependency Import
 require('dotenv').config();
 const express = require('express');
+const methodOverride = require('method-override');
 const morgan = require('morgan');
+const PostRouter = require('./controllers/posts');
+
+// Create Express Application
 const app = express();
 
 // Middleware
-app.use(morgan('tiny'));
-app.use(express.static('public'));
+app.use(methodOverride('_method'));
+app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: true }));
+app.use('/public', express.static('public'));
 
-// Router
-const PostRouter = require('./controllers/posts');
+// Routers
 app.use('/posts', PostRouter)
 
 // Index Reroute
