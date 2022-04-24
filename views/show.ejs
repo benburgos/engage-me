@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('partials/head.ejs') %> 
+</head>
+<body>
+<div class="container is-widescreen">
+
+    <nav class="level">
+        <div class="level-left">
+          <div class="logo">
+            <a href="/posts">
+              <p class="title">ENGAGE.ME</p>
+            </a>
+          </div>
+        </div>
+      
+        <div class="level-right">
+            <div class="buttons">
+                <a class="button is-link" href="/posts">
+                    Return to All Posts
+                </a>
+            </div>
+        </div>
+    </nav>
+
+            <div class="card">
+                <header class="card-header">
+                    <p class="card-header-title"><%= post.feedbackType %></p>
+                </header>
+                <div class="card-content">
+                    <div class="columns">
+                        <div class="column is-one-fifth has-text-centered">
+                        <p class="title">Upvotes</p>
+                        <p class="subtitle"><%= post.upVotes %> </p>
+                        </div>
+                        <div class="column">
+                            <div class="content">
+                                <p class="title">
+                                    <%= post.title %> 
+                                </p>
+                                <div class="box">
+                                    <%= post.description %> 
+                                </div>
+                                <time>
+                                    <p class="subtitle is-6"><i><%= post.createdAt %></i></p>
+                                </time>
+                            </div>
+                        </div>
+                    </div>
+                    <nav class="level">
+                        <div class="level-left">
+                          <div class="level-item"></div>
+                        </div>
+                        <div class="level-right">
+                            <div class="buttons">
+                                <input class="button is-warning" type="submit" value="Edit Post">
+                                <input class="button is-danger" type="reset" value="Delete Post">
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+
+            <% for( let index = 0; index < post.comments.length; index++ ) { %>
+                <div class="card">
+                    <div class="card-content">
+                        <div class="columns">
+                            <div class="column is-one-fifth has-text-centered">
+                                <strong>Posted by:</strong> Your Manager @ <%= post.comments[index].createdAt %>
+                            </div>
+                            <div class="column">
+                                <div class="content">
+                                    <div class="box">
+                                        <%= post.comments[index].comment %> 
+                                    </div>
+                                </div>
+                                <nav class="level">
+                                    <div class="level-left">
+                                      <div class="level-item"></div>
+                                    </div>
+                                    <div class="level-right">
+                                        <a href="#" class="card-footer-item">Edit</a>
+                                        <a href="#" class="card-footer-item">Delete</a>
+                                    </div>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <% } %>
+    
+        <br>
+
+</div>
+</body>
+</html>

@@ -4,9 +4,14 @@ module.exports = [
         title: 'It would be really great if we could get a Bevy machine!',
         description: 'A Bevy machine in the breakroom would greatly increase my performance!',
         upVotes: 250,
-        comments: [{
-            comment: "You're right, we need one!"
-        }]
+        comments: [
+            {
+                comment: "You're right, we need one!"
+            },
+            {
+                comment: "Oh jeez, did I post that..?"
+            }
+        ]
     },
     {
         feedbackType: 'Question',

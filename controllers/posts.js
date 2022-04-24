@@ -45,8 +45,10 @@ router.get('/:id/edit', (req, res) => {
 });
 
 // Show Route
-router.get('/:id', (req, res) => {
-    res.send(`You made it to the detail page for ${req.params.id}`)
+router.get('/:id', async (req, res) => {
+    const post = await Post.findById(req.params.id).catch((err) => res.send(err));
+    console.log(post)
+    res.render('show.ejs', { post });
 });
 
 module.exports = router;
