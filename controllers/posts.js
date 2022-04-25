@@ -15,7 +15,7 @@ router.get('/', async (req, res) => {
 router.get('/seed', async (req, res) => {
     await Post.remove({}).catch((err) => res.send(err));
     const posts = await Post.create(postSeed).catch((err) => res.send(err));
-    res.json(posts);
+    res.redirect('/posts');
 });
 
 // New Route
@@ -26,12 +26,20 @@ router.get('/new', (req, res) => {
 // Delete Route
 router.delete('/:id', async (req, res) => {
     const post = await Post.findByIdAndDelete(req.params.id).catch((err) => res.send(err));
-    res.redirect('/posts')
+    res.redirect('/posts');
 });
 
 // Update Route
 router.put('/:id', (req, res) => {
     console.log(`--Update Route Accessed--`)
+});
+
+// Upvote Route
+router.put('/upvote/:id', async (req, res) => {
+    const post = await Post.findById(req.params.id, req.body).catch((err) => res.send(err));
+    post.upVotes += 1
+    await post.save();
+    res.redirect('/posts');
 });
 
 // Create Route

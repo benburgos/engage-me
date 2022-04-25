@@ -35,7 +35,7 @@
                     <div class="columns">
                         <div class="column is-one-fifth has-text-centered">
                         <p class="title">Upvotes</p>
-                        <p class="subtitle"><%= posts[index].upVotes %> </p>
+                        <p class="subtitle" id="upvotes"><%= posts[index].upVotes %> </p>
                         </div>
                         <div class="column">
                             <div class="content">
@@ -54,10 +54,25 @@
                             </div>
                         </div>
                     </div>
-                    <footer class="card-footer">
-                        <a href="#" class="card-footer-item">Upvote</a>
-                        <a href="/posts/<%= posts[index]._id %>" class="card-footer-item">View Post</a>
-                    </footer>
+                    <nav class="level">
+                        <div class="level-left">
+                          <div class="level-item"></div>
+                        </div>
+                        <div class="level-right">
+                            <div class="buttons">
+                                <div class="level-item">
+                                <form action="/posts/upvote/<%= posts[index]._id %>?_method=PUT" method="post">
+                                <button type="submit" class="button is-success">^ Upvote</button>
+                                </form>
+                                </div>
+                                <div class="level-item">
+                                <a class="button is-link" href="/posts/<%= posts[index]._id %>">
+                                    View Post
+                                </a>
+                                </div>
+                            </div> 
+                        </div>
+                    </nav>
                 </div>
             </div>
     
