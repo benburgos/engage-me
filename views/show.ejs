@@ -43,13 +43,33 @@
                                     <%= post.description %> 
                                 </div>
                                 <time>
+                                <% if (post.createdAt === post.updatedAt) { %>
                                     <p class="subtitle is-6">
                                         <i>
+                                            Created:
                                             <%= post.createdAt.toLocaleDateString() %>
                                             @
                                             <%= post.createdAt.toLocaleTimeString() %>
                                         </i>
                                     </p>
+                                <% } else { %>
+                                    <p class="subtitle is-6">
+                                        <i>
+                                            Created:
+                                            <%= post.createdAt.toLocaleDateString() %>
+                                            @
+                                            <%= post.createdAt.toLocaleTimeString() %>
+                                        </i>
+                                    </p>
+                                    <p class="subtitle is-6">
+                                        <i>
+                                            Last Edit:
+                                            <%= post.updatedAt.toLocaleDateString() %>
+                                            @
+                                            <%= post.updatedAt.toLocaleTimeString() %>
+                                        </i>
+                                    </p>
+                                <% } %> 
                                 </time>
                             </div>
                         </div>

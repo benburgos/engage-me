@@ -30,8 +30,10 @@ router.delete('/:id', async (req, res) => {
 });
 
 // Update Route
-router.put('/:id', (req, res) => {
-    console.log(`--Update Route Accessed--`)
+router.put('/:id', async (req, res) => {
+    const post = await Post.findByIdAndUpdate(req.params.id, req.body).catch((err) => res.send(err));
+    await post.save();
+    res.redirect(`/posts/${req.params.id}`)
 });
 
 // Upvote Route
@@ -49,8 +51,9 @@ router.post('/', async (req, res) => {
 });
 
 // Edit Route
-router.get('/:id/edit', (req, res) => {
-    res.send(`You made it to the edit page for ${req.params.id}`)
+router.get('/:id/edit', async (req, res) => {
+    const post = await Post.findById(req.params.id).catch((err) => res.send(err));
+    res.render('edit.ejs', { post });
 });
 
 // Show Route

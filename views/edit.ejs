@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('partials/head.ejs') %> 
+</head>
+<body>
+<div class="container is-widescreen">
+
+    <nav class="level">
+        <div class="level-left">
+          <div class="logo">
+            <a href="/posts">
+              <p class="title">ENGAGE.ME</p>
+            </a>
+          </div>
+        </div>
+      
+        <div class="level-right">
+            <div class="buttons">
+                <a class="button is-link" href="/posts/<%= post._id  %>">
+                    Return to Post
+                </a>
+                <a class="button is-link" href="/posts">
+                    Return to All Posts
+                </a>
+            </div>
+        </div>
+    </nav>
+    <form action="/posts/<%= post._id %>?_method=PUT" method="post">
+            <div class="card">
+                <header class="card-header">
+                    <div class="field">
+                        <div class="control">
+                            <div class="select">
+                                <select name="feedbackType">
+                                    <option><%= post.feedbackType %></option>
+                                    <option><%= post.feedbackType === 'Question' ? 'Feedback':'Question' %> </option>
+                                </select>
+                            </div>
+                        </div>
+                </header>
+                <div class="card-content">
+                    <div class="columns">
+                        <div class="column is-one-fifth has-text-centered">
+                        <p class="title">Upvotes</p>
+                        <p class="subtitle"><%= post.upVotes %> </p>
+                        </div>
+                        <div class="column">
+                            <div class="content">
+                                <p class="title">
+                                    <%= post.title %>
+                                </p>
+                                <div class="box">
+                                    <textarea class="textarea is-normal" name="description" placeholder="<%= post.description %>"></textarea>
+                                </div>
+                                <time>
+                                    <% if (post.createdAt === post.updatedAt) { %>
+                                        <p class="subtitle is-6">
+                                            <i>
+                                                Created:
+                                                <%= post.createdAt.toLocaleDateString() %>
+                                                @
+                                                <%= post.createdAt.toLocaleTimeString() %>
+                                            </i>
+                                        </p>
+                                    <% } else { %>
+                                        <p class="subtitle is-6">
+                                            <i>
+                                                Created:
+                                                <%= post.createdAt.toLocaleDateString() %>
+                                                @
+                                                <%= post.createdAt.toLocaleTimeString() %>
+                                            </i>
+                                        </p>
+                                        <p class="subtitle is-6">
+                                            <i>
+                                                Last Edit:
+                                                <%= post.updatedAt.toLocaleDateString() %>
+                                                @
+                                                <%= post.updatedAt.toLocaleTimeString() %>
+                                            </i>
+                                        </p>
+                                    <% } %> 
+                                    </time>
+                            </div>
+                        </div>
+                    </div>
+                    <nav class="level">
+                        <div class="level-left">
+                          <div class="level-item"></div>
+                        </div>
+                        <div class="level-right">
+                            <div class="buttons">
+                                <button type="submit" class="button is-success">Submit Edit</button>
+                                </form>
+                                <form action="/posts/<%= post._id %>?_method=DELETE" method="post">
+                                    <button type="submit" class="button is-danger">Delete Post</button>
+                                </form>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+    
+        <br>
+
+</div>
+</body>
+</html>
