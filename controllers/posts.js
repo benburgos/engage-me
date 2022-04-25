@@ -33,7 +33,7 @@ router.delete('/:id', async (req, res) => {
 router.put('/:id', async (req, res) => {
     const post = await Post.findByIdAndUpdate(req.params.id, req.body).catch((err) => res.send(err));
     await post.save();
-    res.redirect(`/posts/${req.params.id}`)
+    res.redirect(`/posts/${req.params.id}`);
 });
 
 // Upvote Route
@@ -47,7 +47,7 @@ router.put('/upvote/:id', async (req, res) => {
 // Create Route
 router.post('/', async (req, res) => {
     await Post.create(req.body).catch((err) => res.send(err));
-    res.redirect('/posts')
+    res.redirect('/posts');
 });
 
 // Edit Route
