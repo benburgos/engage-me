@@ -15,7 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/public', express.static('public'));
 
 // Routers
-app.use('/posts', PostRouter)
+app.use('/posts', PostRouter);
 
 // Index Reroute
 app.get('/', (req, res) => {
@@ -24,4 +24,4 @@ app.get('/', (req, res) => {
 
 // Listener
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {console.log(`You're connected on port ${PORT}!`)})
+app.listen(PORT, () => {console.log(`You're connected on port ${PORT}!`)});
