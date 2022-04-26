@@ -68,6 +68,14 @@ router.post('/', async (req, res) => {
     res.redirect('/posts');
 });
 
+// Create Route -- Comments
+router.post('/:id', async (req, res) => {
+    const post = await Post.findOne({_id: req.params.id});
+    post.comments.push(req.body)
+    await post.save();
+    res.redirect(`/posts/${req.params.id}`);
+})
+
 // Edit Route
 router.get('/:id/edit', async (req, res) => {
     const post = await Post.findById(req.params.id).catch((err) => res.send(err));

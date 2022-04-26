@@ -88,6 +88,37 @@
                     </nav>
                 </div>
             </div>
+            <div class="card">
+                <header class="card-header">
+                    <p class="card-header-title">New Comment</p>
+                </header>
+                <div class="card-content">
+                    <div class="columns">
+                        <div class="column is-one-fifth has-text-centered">
+                        </div>
+                        <div class="column">
+                            <div class="content">
+                                <div class="box">
+                                    <form action="/posts/<%= post._id %>" method="post">
+                                    <input class="input is-normal" type="text" name="comment" placeholder="Type in your comment..">
+                                </div>
+                            </div>
+                            <nav class="level">
+                                <div class="level-left">
+                                  <div class="level-item"></div>
+                                </div>
+                                <div class="level-right">
+                                    <div class="buttons">
+                                        <button type="submit" class="button is-link">
+                                            + Add New Comment
+                                        </button>
+                                    </div>
+                                </form>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <br>
 
@@ -126,7 +157,7 @@
             <% } %>
     
         <br>
-
+        
 </div>
 </body>
 </html>
