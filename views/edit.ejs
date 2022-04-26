@@ -91,10 +91,14 @@
                         </div>
                         <div class="level-right">
                             <div class="buttons">
-                                <button type="submit" class="button is-success">Submit Edit</button>
+                                <button type="submit" class="button is-success">
+                                    <i class="fa-solid fa-floppy-disk"></i>
+                                </button>
                                 </form>
                                 <form action="/posts/<%= post._id %>?_method=DELETE" method="post">
-                                    <button type="submit" class="button is-danger">Delete Post</button>
+                                    <button type="submit" class="button is-danger">
+                                        <i class="fa-solid fa-trash-can"></i>
+                                    </button>
                                 </form>
                             </div>
                         </div>

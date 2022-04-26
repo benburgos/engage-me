@@ -29,6 +29,15 @@ router.delete('/:id', async (req, res) => {
     res.redirect('/posts');
 });
 
+// Delete Route -- Comments
+router.delete('/:id/comments/:cid', async (req, res) => {
+    const post = await Post.findById(req.params.id)
+    const commentIndex = post.comments.findIndex(obj => obj.id === req.params.cid)
+    post.comments.splice(commentIndex, 1)
+    await post.save();
+    res.redirect(`/posts/${req.params.id}`);
+})
+
 // Update Route
 router.put('/:id', async (req, res) => {
     const post = await Post.findByIdAndUpdate(req.params.id, req.body).catch((err) => res.send(err));

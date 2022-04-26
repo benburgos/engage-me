@@ -17,6 +17,9 @@
       
         <div class="level-right">
             <div class="buttons">
+                <a class="button is-link" href="/posts/<%= post._id  %>">
+                    Return to Post
+                </a>
                 <a class="button is-link" href="/posts">
                     Return to All Posts
                 </a>
@@ -76,6 +79,8 @@
                     </div>
                 </div>
             </div>
+
+            <br>
             
             <% for( let index = 0; index < post.comments.length; index++ ) { %>
                 <% let editPost = post.comments.find(id => id = commentId) %> 
@@ -108,10 +113,10 @@
                                         </div>
                                         <div class="level-right">
                                             <div class="buttons">
-                                                <button type="submit" class="button is-success">Submit Edit</button>
+                                                <button type="submit" class="button is-success"><i class="fa-solid fa-floppy-disk"></i></button>
                                             </form>
-                                                <form action="/posts/<%= post._id %>?_method=DELETE" method="post">
-                                                    <button type="submit" class="button is-danger">Delete Post</button>
+                                            <form action="/posts/<%= post._id %>/comments/<%= post.comments[index]._id %>?_method=DELETE" method="post">
+                                                    <button type="submit" class="button is-danger"><i class="fa-solid fa-trash-can"></i></button>
                                                 </form>
                                             </div>
                                         </div>
