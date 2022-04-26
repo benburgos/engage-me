@@ -16,6 +16,12 @@ app.use('/public', express.static('public'));
 
 // Routers
 app.use('/posts', PostRouter)
+app.get('/signup', (req, res) => {
+    res.render('signup.ejs')
+})
+app.get('/login', (req, res) => {
+    res.render('login.ejs')
+})
 
 // Index Reroute
 app.get('/', (req, res) => {
