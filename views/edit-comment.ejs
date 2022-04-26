@@ -74,22 +74,12 @@
                             </div>
                         </div>
                     </div>
-                    <nav class="level">
-                        <div class="level-left">
-                          <div class="level-item"></div>
-                        </div>
-                        <div class="level-right">
-                            <div class="buttons">
-                                <a class="button is-warning" href="/posts/<%= post._id %>/edit">
-                                    Edit Post
-                                </a>
-                            </div>
-                        </div>
-                    </nav>
                 </div>
             </div>
-
+            
             <% for( let index = 0; index < post.comments.length; index++ ) { %>
+                <% let editPost = post.comments.find(id => id = commentId) %> 
+                <% let postIndex = post.comments.findIndex(obj => obj.id === commentId) %> 
                 <div class="card">
                     <div class="card-content">
                         <div class="columns">
@@ -103,18 +93,31 @@
                             <div class="column">
                                 <div class="content">
                                     <div class="box">
-                                        <%= post.comments[index].comment %> 
+                                        <% if (index === postIndex) { %>
+                                            <form action="/posts/<%= post._id %>/comments/<%= post.comments[index]._id %>?_method=PUT" method="post">
+                                                <textarea class="textarea is-normal" name="comment"></textarea>
+                                            <% } else { %>
+                                             <%= post.comments[index].comment %>
+                                             <% } %> 
+                                        </div>
                                     </div>
+                                    <% if (index === postIndex) { %>
+                                    <nav class="level">
+                                        <div class="level-left">
+                                          <div class="level-item"></div>
+                                        </div>
+                                        <div class="level-right">
+                                            <div class="buttons">
+                                                <button type="submit" class="button is-success">Submit Edit</button>
+                                            </form>
+                                                <form action="/posts/<%= post._id %>?_method=DELETE" method="post">
+                                                    <button type="submit" class="button is-danger">Delete Post</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </nav>
+                                    <% } %>
                                 </div>
-                                <nav class="level">
-                                    <div class="level-left">
-                                      <div class="level-item"></div>
-                                    </div>
-                                    <div class="level-right">
-                                        <a href="/posts/<%= post._id %>/comments/<%= post.comments[index]._id %>/edit" class="card-footer-item">Edit</a>
-                                    </div>
-                                </nav>
-                            </div>
                         </div>
                     </div>
                 </div>

@@ -36,13 +36,22 @@ router.put('/:id', async (req, res) => {
     res.redirect(`/posts/${req.params.id}`);
 });
 
-// Upvote Route
+// Update Route -- Upvotes
 router.put('/upvote/:id', async (req, res) => {
     const post = await Post.findById(req.params.id, req.body).catch((err) => res.send(err));
     post.upVotes += 1
     await post.save();
     res.redirect('/posts');
 });
+
+// Update Route -- Comments
+router.put('/:id/comments/:cid', async (req, res) => {
+    const post = await Post.findOne({_id: req.params.id})
+    const commentIndex = post.comments.findIndex(obj => obj.id === req.params.cid)
+    post.comments[commentIndex] = req.body
+    await post.save()
+    res.redirect(`/posts/${req.params.id}`);
+})
 
 // Create Route
 router.post('/', async (req, res) => {
@@ -55,6 +64,12 @@ router.get('/:id/edit', async (req, res) => {
     const post = await Post.findById(req.params.id).catch((err) => res.send(err));
     res.render('edit.ejs', { post });
 });
+
+// Edit Route - Comments
+router.get('/:id/comments/:cid/edit', async (req, res) => {
+    const post = await Post.findById(req.params.id).catch((err) => res.send(err));
+    res.render('edit-comment.ejs', { post: post, commentId: req.params.cid })
+})
 
 // Show Route
 router.get('/:id', async (req, res) => {
