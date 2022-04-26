@@ -36,11 +36,13 @@
                         </div>
                         <div class="column">
                             <div class="content">
+                                <div class="box">
                                 <p class="title">
                                     <%= post.title %> 
                                 </p>
-                                <div class="box">
+                                <p class="subtitle">
                                     <%= post.description %> 
+                                </p>
                                 </div>
                                 <time>
                                 <% if (post.createdAt === post.updatedAt) { %>
