@@ -9,3 +9,6 @@ html {
 .card {
     background-color: rgb(198, 197, 197);
 }
+.spacer {
+    margin-top: 2px;
+}
