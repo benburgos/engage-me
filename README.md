@@ -1,6 +1,8 @@
 # Engage.Me
 ---
 
+[Open the App!](https://bb-engage-me.herokuapp.com/)
+
 Companies use various methods to collect ongoing feedback from their employees in various capacities and timeframes. 
 
 By the time feedback is actioned, depending on what it is, everyone involved may even forget when and where it came from.
