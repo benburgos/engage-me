@@ -47,10 +47,8 @@ This allows companies to quickly action feedback and, most importantly, demonstr
         feedbackType: { type: String, required: true },
         title: { type: String, required: true },
         description: { type: String, required: true },
-        postCreated: { type: Date, default: Date() },
-        lastEdit: { type: Date, default: Date() },
         upVotes: Number,
-        comments: { type: String }
+        comments: [{ type: String }]
     }
     ```
 ---
